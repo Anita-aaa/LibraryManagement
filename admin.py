@@ -60,4 +60,32 @@ def connectdb():
         enter=enter+1
     query='SELECT * FROM Login'
     cur.execute(query)
+def home():
+    try:
+        global window,b1,b2,e1,e2,con,cur,win
+        window=Tk()
+        window.title('Welcome')
+        window.resizable(False,False)
+        window.geometry("400x400+480+180")
+        #wel=Label(window,text='LIBRARY',font='Helvetica 28 bold')
+        #lib=Label(window,text='MANAGEMENT',font='Helvetica 28 bold')
+        usid=Label(window,text='USER ID')
+        paswrd=Label(window,text='PASSWORD')
+        e1=Entry(window,width=22)
+        e2=Entry(window,width=22)
+        b1=Button(window,text=' LOGIN AS LIBRARIAN' ,height=2,width=20,command=loginlibr)
+        b2=Button(window,text=' LOGIN AS ADMIN ', height=2,width=20,command=loginadmin)
+        #wel.place(x=160,y=20)
+        #lib.place(x=110,y=70)2222
+        usid.place(x=70,y=100)
+        paswrd.place(x=70,y=140)
+        e1.place(x=180,y=100)
+        e2.place(x=180,y=140)
+        b1.place(x=175,y=180)
+        b2.place(x=175,y=225)
+        window.mainloop()
+    except Exception:
+        window.destroy()
+enter=1
+home()
 
