@@ -27,4 +27,17 @@ def libr():
 def loginadmin():
     if e1.get()=='admin' and e2.get()=='admin':
         admin();
-        
+def admin():
+    window.withdraw()
+    global win,b1,b2,b3,b4,cur,con
+    win=Tk()
+    win.title('Admin')
+    win.geometry("400x400+480+180")
+    win.resizable(False,False)
+    win.mainloop()
+
+
+def closedb():
+    global con,cur
+    cur.close()
+    con.close()        
