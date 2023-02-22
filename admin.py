@@ -41,3 +41,23 @@ def closedb():
     global con,cur
     cur.close()
     con.close()        
+
+def connectdb():
+    global con,cur
+    #Enter your username and password of MySQL
+    con=p.connect(host="localhost",user="root",passwd="at123thapa")
+    cur=con.cursor()
+    cur.execute('CREATE DATABASE IF NOT EXISTS Library')
+    cur.execute('USE Library')
+    global enter
+    if enter==1:
+        l='CREATE TABLE IF NOT EXISTS Login(name varchar(20),userid varchar(10),branch varchar(20),mobile int(10))'
+        b='CREATE TABLE IF NOT EXISTS Book(subject varchar(20),title varchar(20),author varchar(20),serial int(5))'
+        i='CREATE TABLE IF NOT EXISTS BookIssue(stdid varchar(20),serial varchar(10),issue date,exp date)'
+        cur.execute(l)
+        cur.execute(b)
+        cur.execute(i)
+        enter=enter+1
+    query='SELECT * FROM Login'
+    cur.execute(query)
+
